@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+  --clr-pale-blue: hsl(243, 100%, 93%);
+  --clr-gray-blue: hsl(229, 7%, 55%);
+  --clr-dark-blue: hsl(228, 56%, 26%);
+  --clr-very-dark-blue: hsl(229, 57%, 11%);
+
+  --clr-gradient: linear-gradient(45deg, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+  --ff-base: "Raleway", sans-serif;
+
+  --fs-base: 0.875rem;
+  --fs-lg: 1rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 2rem;
+
+  --fw-base: 400;
+  --fw-bold: 700;
+}
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+img, svg{
+  max-width: 100%;
+  display: block;
+}
+
+main{
+  font: var(--fw-base) var(--fs-base) var(--ff-base);
+  color: var(--clr-pale-blue);
+
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-image: url('../images/bg-mobile.png');
+}
+
+.container{
+  display: grid;
+  gap: 1rem;
+  width: min(57.5rem, calc(100% - 50px));
+}
+
+.header{
+  display: grid;
+  gap: 2rem;
+  background-color: var(--clr-dark-blue);
+  padding: 2.5rem;
+  border-radius: 0.5rem 6rem 0.5rem 0.5rem;
+}
+
+.header__nav ul{
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav__btn{
+  --size: 3rem;
+  display: grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 0.5rem;
+  background-color: var(--clr-very-dark-blue);
+  border: none;
+}
+
+.details{
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 1fr 0.5fr 0.5fr;
+  grid-template-areas:
+    'wrapper'
+    'slider';
+}
+
+.details p{
+  text-align: center;
+}
+
+.details-wrapper{
+  width: 100%;
+  background-color: var(--clr-dark-blue);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 14px;
+  grid-area: wrapper;
+  grid-row: 1 / 3;
+  padding: 2rem 2rem 3rem 2rem;
+}
+
+.details__slider-container{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 20px;
+  background-color: hsla(229, 57%, 11%, 0.65);
+  border-radius: 0.5rem;
+  padding-inline: 0.25rem;
+}
+
+.details__slider{
+  width: 76%;
+  height: 70%;
+  background: var(--clr-gradient);
+  border-radius: inherit;
+  padding-right: 2px;
+}
+
+.details__slider-thumb{
+  --size: 10px;
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  margin-top: 2px;                        /* Margin Auto Or Display Flex Align Center isnt Working for Some Reason*/
+  margin-left: auto;
+  border-radius: 50%;
+}
+
+.details__b{
+  font-weight: var(--fw-bold);
+}
+
+.details__slider-value{
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.details__thumb-info{
+  --bg: var(--clr-pale-blue);
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: var(--clr-gray-blue);
+  background-color: var(--bg);
+  width: fit-content;
+  padding: 0.7rem 1.6rem 0.7rem 1.6rem;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  grid-area: slider;
+  grid-row: 2 / 4;
+}
+
+.details__thumb-big-text{
+  font-size: 2.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--clr-very-dark-blue);
+}
+
+.attribution{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: var(--clr-pale-blue);
+  font-size: 11px;
+  text-align: center; 
+}
+
+.attribution a {
+  color: white;
+}
+
+
+@media(min-width: 600px){
+  main{
+    background: var(--clr-very-dark-blue) url('../images/bg-desktop.png') no-repeat bottom;
+  }
+  .container{
+    grid-template-columns: 0.65fr 1fr;
+    gap: 2rem;
+  }
+
+  .details{
+    grid-template-rows: 0.5fr 0.5fr 1fr;
+  }
+  
+  .details p{
+    text-align: left;
+  }
+
+  .details-wrapper{
+    grid-row: 2/4;
+    padding-inline: 2.5rem;
+    padding-bottom: 0;
+    grid-auto-rows: 0fr;
+    padding-top: 36px;
+  }
+
+  .details__thumb-info{
+    grid-row: 1/3;
+    justify-self: end;
+    margin-right: 2.5rem;
+    position: relative;
+    top: -1rem;
+  }
+
+  .details__thumb-info::after{
+    content: "";
+    position: absolute;
+    border-width: 15px;
+    border-style: solid;
+    border-color: var(--bg) var(--bg) transparent transparent;
+    right: 0;
+    bottom: -20px;
+  }
+}
